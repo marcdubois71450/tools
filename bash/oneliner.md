@@ -19,6 +19,10 @@ root@device:~# grep kernel /var/log/syslog | rev | cut -d"]" -f1 | rev | awk '{ 
 0.0G python3
 ```
 
+```
+grep kernel /var/log/syslog | rev | cut -d"]" -f1 | rev | awk '{ print $3, $4, $5, $8 }' | grep '^[0-9].*[a-zA-Z][a-zA-Z]' | awk '{total_vm+=$1; rss+=$2; pgtables_bytes+=$3; db[$4]=db[$4]+$2;} END {for (name in db) printf("%.1fG %s\n",(db[name] * 4096)/(1024*1024*1024),name)}' | sort -g -r | head -n 10
+```
+
 **Perl Version**
 
 ```
@@ -33,6 +37,10 @@ root@device:~# grep kernel /var/log/syslog | rev | cut -d"]" -f1  | rev | awk '{
 0.1G stats
 0.0G php-login
 0.0G python3
+```
+
+```
+grep kernel /var/log/syslog | rev | cut -d"]" -f1  | rev | awk '{ print $3, $4, $5, $8 }' | grep '^[0-9].*[a-zA-Z][a-zA-Z]' | perl -MData::Dumper -p -e 'BEGIN { $db = {}; } ($total_vm, $rss, $pgtables_bytes, $name) = split; $db->{$name}->{total_vm} += $total_vm; $db->{$name}->{rss} += $rss; $db->{$name}->{pgtables_bytes} += $pgtables_bytes; $_=undef; END { map { printf("%.1fG %s\n", ($db->{$_}->{rss} * 4096)/(1024*1024*1024), $_) } sort { $db->{$a}->{rss} <=> $db->{$b}->{rss} } keys %{$db}; }' | tail -n 10 | tac
 ```
 
 
