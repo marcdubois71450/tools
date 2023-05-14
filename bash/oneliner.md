@@ -46,23 +46,23 @@ grep kernel /var/log/syslog | rev | cut -d"]" -f1  | rev | awk '{ print $3, $4, 
 
 **Detail**
 
-`grep kernel syslog.log`: this command searches for all lines containing the word "kernel" in the syslog.log file.
+- `grep kernel syslog.log`: this command searches for all lines containing the word "kernel" in the syslog.log file.
 
-`rev`: reverses the contents of each line.
+- `rev`: reverses the contents of each line.
 
-`cut -d"]" -f1`: splits each line using the "]" character as a separator and returns the first part.
+- `cut -d"]" -f1`: splits each line using the "]" character as a separator and returns the first part.
 
-`rev`: restores the original order of each row.
+- `rev`: restores the original order of each row.
 
-`awk '{ print $3, $4, $5, $8 }'`: selects columns 3, 4, 5 and 8 of each row and displays them.
+- `awk '{ print $3, $4, $5, $8 }'`: selects columns 3, 4, 5 and 8 of each row and displays them.
 
-`grep '^[0-9].*[a-zA-Z][a-zA-Z]'`: keeps only lines starting with a number followed by two alphabetic characters, which eliminates noise lines.
+- `grep '^[0-9].*[a-zA-Z][a-zA-Z]'`: keeps only lines starting with a number followed by two alphabetic characters, which eliminates noise lines.
 
-`awk '{total_vm+=$1; rss+=$2; pgtables_bytes+=$3; db[$4]=db[$4]+$2;} END {for (name in db) printf("%.1fG %s\n",(db[name] * 4096)/(1024*1024*1024),name)}'`: calculates process statistics, adding columns 1, 2, and 3 based on the process name (column 4). It then displays the process names with their total RSS memory consumption (in GB).
+-  `awk '{total_vm+=$1; rss+=$2; pgtables_bytes+=$3; db[$4]=db[$4]+$2;} END {for (name in db) printf("%.1fG %s\n",(db[name] * 4096)/(1024*1024*1024),name)}'`: calculates process statistics, adding columns 1, 2, and 3 based on the process name (column 4). It then displays the process names with their total RSS memory consumption (in GB).
 
-`sort -g -r`: sorts the results in descending order.
+- `sort -g -r`: sorts the results in descending order.
 
-`head -n 10`: displays the first ten rows, which contain the most memory-intensive processes.
+- `head -n 10`: displays the first ten rows, which contain the most memory-intensive processes.
 
 The Perl version is similar, but uses Data::Dumper to store the results in a hash table ($db) before sorting and displaying them.
 
