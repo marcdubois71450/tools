@@ -46,7 +46,7 @@ Steps:
 
 - Remember to always format your memory card from your console and not on your computer. Otherwise it can be a problem for large card capacities.
 
- - An essential plugin if you have a big memory card is [Game Categories Lite](https://www.gamebrew.org/wiki/GC_Lite_PSP) or GC Lite. It allows you to categorize games by subfolders. It is mandatory if you have more than 100 Games, because in this case the PSP could not display them all. This plugins solves the problem is to put you much more than 100 Games. To use it, copy the contents of PSP_SAMPLE to the root of your memory card. Then place your games and Homebrews in the appropriate folders.
+ - An essential plugin if you have a big memory card is [Game Categories Lite](https://www.gamebrew.org/wiki/GC_Lite_PSP) or GC Lite. It allows you to categorize games by subfolders. It is mandatory if you have more than 100 Games, because in this case the PSP could not display them all. This plugins solves the problem is to put you much more than 100 Games. 
 
  - For fix error like "The system software of your PSP™ system is version 9.90. There is no need to update" when run OFW 6.61 update, run VERSiON.TXT SWiTCHER and press X to fix firmware Version. Now you can exit, and you should now be able to install the 6.61 update.
 
@@ -59,4 +59,3 @@ Steps:
 - PSP_00 Contains the file tree for the Update to 6.61 Official (for all model), the PRO-C flash (UPDATE, Flash Recovery, CIPL Flasher) to be copied to the root of the memory card
 - PSP_01 Contains the file tree with Infinity 2.1 (for some 2000, all 3000 and STREET) file and the PRO-C flash (UPDATE, Flash Recovery) to be copied to the root of the memory card
 - PSP_02 Contains the file tree with Infinity for PSP GO and the PRO-C flash (UPDATE, Flash Recovery) to be copied to the root of the memory card
-- PSP_SAMPLE Contains an example of using the Game Categories plugin, to organize your games by folder. To be copied to the root of the memory card. Then place your Games/Homebrews in the appropriate category folders
